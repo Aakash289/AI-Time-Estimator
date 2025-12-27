@@ -1,4 +1,4 @@
-AI Time Estimator
+# AI Time Estimator
 
 AI Time Estimator is a lightweight Python CLI tool that estimates how long a task will take to complete.
 
@@ -6,113 +6,92 @@ The user provides a task description in the terminal, and the tool returns a str
 
 This project is intentionally simple and self contained, designed to demonstrate how to build a reliable command line tool using the OpenAI Responses API with strict JSON output and validation.
 
-What this project does
+---
 
-Prompts the user for a task description via the command line
+## What This Project Does
 
-Sends the task to the OpenAI Responses API
-
-Generates a time estimate with:
-
-Total estimated minutes
-
-A realistic time range
-
-A breakdown of steps with minutes per step
-
-Assumptions made
-
-Potential risks
-
-Validates the AI response to ensure correct structure and data types
-
-Always returns valid JSON, even when errors occur
+- Prompts the user for a task description via the command line
+- Sends the task to the OpenAI Responses API
+- Generates a time estimate with:
+  - Total estimated minutes
+  - A realistic time range
+  - A breakdown of steps with minutes per step
+  - Assumptions made
+  - Potential risks
+- Validates the AI response to ensure correct structure and data types
+- Always returns valid JSON, even when errors occur
 
 This makes the tool suitable for automation, scripting, or integration into other workflows.
 
-Technologies used
+---
 
-Python 3
+## Technologies Used
 
-OpenAI Python SDK (Responses API)
+- Python 3
+- OpenAI Python SDK (Responses API)
+- python dotenv for environment variable management
+- uv for virtual environment and dependency management
 
-python dotenv for environment variable management
+### Standard Python Libraries
 
-uv for virtual environment and dependency management
+- json
+- os
+- sys
+- typing
 
-Standard Python libraries
+---
 
-json
+## How It Works
 
-os
+### Environment Setup
 
-sys
+- The OpenAI API key is stored in a `.env` file
+- python dotenv loads the key into the environment at runtime
 
-typing
+### User Input
 
-How it works
-Environment setup
+- The CLI prompts the user to describe a task
+- Input is validated to ensure it is not empty
 
-The OpenAI API key is stored in a .env file
+### Prompt Construction
 
-python dotenv loads the key into the environment at runtime
+- A structured prompt is built with strict instructions
+- The AI is instructed to return only valid JSON with a fixed schema
 
-User input
+### API Call
 
-The CLI prompts the user to describe a task
+- The OpenAI Responses API is called using the official SDK
+- JSON mode is enabled to enforce structured output
 
-Input is validated to ensure it is not empty
+### Parsing and Validation
 
-Prompt construction
+- The response is parsed into a Python dictionary
+- The output is validated to ensure:
+  - Correct keys
+  - Correct data types
+  - Breakdown minutes sum to total minutes
 
-A structured prompt is built with strict instructions
+### Output
 
-The AI is instructed to return only valid JSON with a fixed schema
+- The final result is printed as formatted JSON
+- If any step fails, a fallback JSON error response is returned
 
-API call
+---
 
-The OpenAI Responses API is called using the official SDK
+## Setup and Usage
 
-JSON mode is enabled to enforce structured output
+1. Clone the repository
+2. Create a virtual environment using uv
+3. Install dependencies
+4. Add your OpenAI API key to a `.env` file
+5. Run the CLI
 
-Parsing and validation
+---
 
-The response is parsed into a Python dictionary
+## Design Principles
 
-The output is validated to ensure:
-
-Correct keys
-
-Correct data types
-
-Breakdown minutes sum to total minutes
-
-Output
-
-The final result is printed as formatted JSON
-
-If any step fails, a fallback JSON error response is returned
-
-Setup and usage
-
-Clone the repository
-
-Create a virtual environment using uv
-
-Install dependencies
-
-Add your OpenAI API key to a .env file
-
-Run the CLI
-
-Design principles
-
-Single file implementation
-
-No external datasets or file writes
-
-Predictable and validated JSON output
-
-Defensive error handling
-
-Readable and maintainable code
+- Single file implementation
+- No external datasets or file writes
+- Predictable and validated JSON output
+- Defensive error handling
+- Readable and maintainable code
