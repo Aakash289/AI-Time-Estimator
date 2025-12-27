@@ -39,7 +39,7 @@ python dotenv for environment variable management
 
 uv for virtual environment and dependency management
 
-Standard Python libraries:
+Standard Python libraries
 
 json
 
@@ -50,7 +50,6 @@ sys
 typing
 
 How it works
-
 Environment setup
 
 The OpenAI API key is stored in a .env file
