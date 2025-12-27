@@ -1,6 +1,7 @@
-# AI-Time-Estimator
+AI Time Estimator
 
 AI Time Estimator is a lightweight Python CLI tool that estimates how long a task will take to complete.
+
 The user provides a task description in the terminal, and the tool returns a structured JSON estimate including total time, a range, a step by step breakdown, assumptions, and risks.
 
 This project is intentionally simple and self contained, designed to demonstrate how to build a reliable command line tool using the OpenAI Responses API with strict JSON output and validation.
